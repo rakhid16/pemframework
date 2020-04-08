@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Laman Masuk</title>
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<img class="wave" src="{{ url_for('static', filename='img/wave.png') }}">
+	
+	<div class="container">
+		<div class="img">
+			<img src="{{ url_for('static', filename='img/bg.svg') }}">
+		</div>
+		
+		<div class="login-content">
+			<form method="POST">
+				<img src="{{ url_for('static', filename='img/avatar.svg') }}"><br><br>
+				<p>{{ pesan }}</p><br>
+				
+				<div class="input-div one">
+          <div class="i">
+         		<i class="fas fa-user"></i>
+           </div>
+        	<div class="div">
+        			<h5><i>Username</i></h5>
+        			<input name="nama" type="text" class="input">
+        	</div>
+        </div>
+							 
+				<div class="input-div pass">
+          <div class="i"> 
+           	<i class="fas fa-lock"></i>
+          </div>
+          <div class="div">
+           	<h5>Sandi lewat</h5>
+           	<input name="pwd" type="password" class="input">
+          </div>
+				</div>
+							
+        <a href="https://t.me/rakhmanWahid" target="blank">Lupa sandi?</a>
+        <input type="submit" class="btn" value="Masuk">
+      </form>
+		</div>
+				
+  </div>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
