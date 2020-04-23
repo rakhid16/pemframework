@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "terserah"
 
 # UNTUK AKSES CLOUD DATABASE
-client = MongoClient("mongodb+srv://ikal:123@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://"RAHASIA":"RAHASIA"@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
 db = client.test        # AMBIL DATABASE test
 collection = db.kantin  # AMBIL COLLECTION kantin
 
