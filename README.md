@@ -5,8 +5,8 @@
 # Flask with MongoDB How to install
 1. Clone or pull this repository
 2. Open your terminal and then write down this command ```pip3 install -r requirements.txt```
-3. If done, you can write down this three commands sequentially
-```export FLASK_APP=main.py```
-```export FLASK_ENV=development```
+3. If done, you can write down this three commands sequentially<br>
+```export FLASK_APP=main.py```<br>
+```export FLASK_ENV=development```<br>
 ```flask run```
 4. Open your browser and go to ```http://localhost:5000/```
