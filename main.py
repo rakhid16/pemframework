@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "terserah"
 
 # UNTUK AKSES CLOUD DATABASE
-client = MongoClient("mongodb+srv://"RAHASIA":"RAHASIA"@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://ikal:123@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
 db = client.test        # AMBIL DATABASE test
 collection = db.kantin  # AMBIL COLLECTION kantin
 
@@ -16,14 +16,14 @@ def index():
   if request.method == "POST":
     if request.form['nama'] == "admin" and request.form['pwd'] == "admin":
       session['masuk'] = True
-      return redirect('dashboard')
+      return redirect(url_for('dashboard', npm = 17081010068, nama = "Radical Rakhman Wahid"))
     else:
       return render_template('landing_page.html', pesan = "Nama pengguna atau sandi lewat salah")
 
   return render_template("landing_page.html")
 
-@app.route('/dashboard')   # LAMAN DASHBOARD
-def dashboard():
+@app.route('/dashboard/<npm>/<nama>')   # LAMAN DASHBOARD
+def dashboard(npm, nama):
   if 'masuk' in session:
     cursor = collection.find()
     data = []
@@ -36,8 +36,8 @@ def dashboard():
   else:
     return "<h1>Login dulu</h1>"
 
-@app.route('/tambah-data', methods=['GET','POST'])   # MENAMBAH DATA - CREATE
-def tambah_data():
+@app.route('/tambah-data/<npm>/<nama>', methods=['GET','POST'])   # MENAMBAH DATA - CREATE
+def tambah_data(npm, nama):
   if 'masuk' in session:
     if request.method == "POST":
       collection.insert_one(
@@ -47,19 +47,19 @@ def tambah_data():
           "harga" : request.form['harga']
         }
       )
-      return redirect(url_for('dashboard'))
+      return redirect(url_for('dashboard', npm=17081010068, nama = 'Radical Rakhman Wahid'))
 
     return render_template('create.html')
   else:
     return "<h1>Login dulu</h1>"
 
-@app.route('/hapus-data/<id>')   # MENGHAPUS DATA - DELETE
-def hapus_data(id):
+@app.route('/hapus-data/<npm>/<nama>/<id>')   # MENGHAPUS DATA - DELETE
+def hapus_data(id, npm, nama):
   if 'masuk' in session:
     collection.delete_one(
       { "_id": int(id) }
     )
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('dashboard', npm=17081010068, nama = 'Radical Rakhman Wahid'))
   else:
     return "<h1>Login dulu</h1>"
 
@@ -71,8 +71,8 @@ def keluar():
   else:
     return redirect('/')
 
-@app.route('/edit-data/<id>', methods=['GET', 'POST'])   # MEMPERBARUI DATA - UPDATE
-def edit_data(id):
+@app.route('/edit-data/<npm>/<nama>/<id>', methods=['GET', 'POST'])   # MEMPERBARUI DATA - UPDATE
+def edit_data(npm, nama, id):
   if 'masuk' in session:
     data = collection.find_one( {"_id" : int(id)} )
 
@@ -86,7 +86,7 @@ def edit_data(id):
           }
         }
       )
-      return redirect(url_for('dashboard'))
+      return redirect(url_for('dashboard', npm = 17081010068, nama = 'Radical Rakhman Wahid'))
 
     return render_template('update.html', data=data)
   else:
