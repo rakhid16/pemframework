@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Ubah data</title>
+        <meta name="description" content="Form ubah pesanan Kantin UPN" />
+        <meta name="author" content="Rakhid16" />
+        <title>Ubah Data - Kantin UPN</title>
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -51,22 +51,21 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Ubah data pesanan</h1>
+                        <h1 class="mt-4">Ubah Data Pesanan</h1>
                         <div class="card mb-4">
                             <div class="card-body">
                                     <form method="POST">
-                                      Nama lama = {{ data['nama_warung'] }}<br>
-                                      <input name="nama_warung" placeholder="masukan nama baru"><br><br>
-                                      Menu lama = {{ data['menu'] }}<br>
-                                      <input name="menu" placeholder="masukan menu baru"><br><br>
-                                      Harga lama = {{ data['harga'] }}<br>
-                                      <input name="harga" placeholder="masukan harga baru"><br><br>
+                                      Nama warung saat ini: {{ data['nama_warung'] }}<br>
+                                      <input name="nama_warung" placeholder="Masukkan nama warung baru"><br><br>
+                                      Menu saat ini: {{ data['menu'] }}<br>
+                                      <input name="menu" placeholder="Masukkan nama menu baru"><br><br>
+                                      Harga saat ini: {{ data['harga'] }}<br>
+                                      <input name="harga" placeholder="Masukkan harga baru"><br><br>
                                       <button type="submit" class="btn btn-primary">Simpan</button><br><br>
                                     </form>
                             </div>
                         </div>
                         <div style="height: 100vh;"></div>
-                        <div class="card mb-4"><div class="card-body">Tahap 0.5</div></div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

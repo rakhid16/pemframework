@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Tambah data</title>
+        <meta name="description" content="Form tambah pesanan Kantin UPN" />
+        <meta name="author" content="Rakhid16" />
+        <title>Tambah Data - Kantin UPN</title>
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -55,15 +55,14 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                     <form method="POST">
-                                      <p>Masukkan nama warung :</p><input type="text" name="nama_warung" placeholder="Nama Warung"><br><br>
-                                      <p>Masukkan nama menu :</p><input type="text" name="menu" placeholder="Menu"><br><br>
-                                      <p>Masukkan harga :</p><input type="integer" name="harga" placeholder="Dalam angka"><br><br>
+                                      <p>Nama warung:</p><input type="text" name="nama_warung" placeholder="Nama warung"><br><br>
+                                      <p>Nama menu:</p><input type="text" name="menu" placeholder="Nama menu"><br><br>
+                                      <p>Harga:</p><input type="number" name="harga" placeholder="Masukkan angka"><br><br>
                                       <button type="submit" class="btn btn-primary">Simpan</button><br><br>
                                     </form>
                             </div>
                         </div>
                         <div style="height: 100vh;"></div>
-                        <div class="card mb-4"><div class="card-body">Tahap 0.5</div></div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

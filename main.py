@@ -2,27 +2,27 @@ from random import randint
 from pymongo import MongoClient
 from flask import Flask, request, render_template, url_for, redirect, session
 
-# UNTUK ROUTING & SESSION
+# Konfigurasi aplikasi dan sesi
 app = Flask(__name__)
 app.secret_key = "terserah"
 
-# UNTUK AKSES CLOUD DATABASE
-client = MongoClient("mongodb+srv://"RAHASIA":"RAHASIA"@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
-db = client.test        # AMBIL DATABASE test
-collection = db.kantin  # AMBIL COLLECTION kantin
+# Koneksi ke database cloud
+client = MongoClient("mongodb+srv://RAHASIA:RAHASIA@forusers-3aig6.mongodb.net/test?retryWrites=true&w=majority")
+db = client.test
+collection = db.kantin
 
-@app.route('/', methods=["POST", "GET"])   # LAMAN LOGIN
+@app.route('/', methods=["POST", "GET"])  # Halaman login
 def index():
   if request.method == "POST":
     if request.form['nama'] == "admin" and request.form['pwd'] == "admin":
       session['masuk'] = True
       return redirect(url_for('dashboard', npm = 17081010068, nama = "Radical Rakhman Wahid"))
     else:
-      return render_template('landing_page.html', pesan = "Nama pengguna atau sandi lewat salah")
+      return render_template('landing_page.html', pesan="Nama pengguna atau kata sandi salah")
 
   return render_template("landing_page.html")
 
-@app.route('/dashboard/<npm>/<nama>')   # LAMAN DASHBOARD
+@app.route('/dashboard/<npm>/<nama>')  # Halaman dashboard
 def dashboard(npm, nama):
   if 'masuk' in session:
     cursor = collection.find()
@@ -36,7 +36,7 @@ def dashboard(npm, nama):
   else:
     return "<h1>Login dulu</h1>"
 
-@app.route('/tambah-data/<npm>/<nama>', methods=['GET','POST'])   # MENAMBAH DATA - CREATE
+@app.route('/tambah-data/<npm>/<nama>', methods=['GET', 'POST'])  # Tambah data
 def tambah_data(npm, nama):
   if 'masuk' in session:
     if request.method == "POST":
@@ -53,7 +53,7 @@ def tambah_data(npm, nama):
   else:
     return "<h1>Login dulu</h1>"
 
-@app.route('/hapus-data/<npm>/<nama>/<id>')   # MENGHAPUS DATA - DELETE
+@app.route('/hapus-data/<npm>/<nama>/<id>')  # Hapus data
 def hapus_data(id, npm, nama):
   if 'masuk' in session:
     collection.delete_one(
@@ -63,7 +63,7 @@ def hapus_data(id, npm, nama):
   else:
     return "<h1>Login dulu</h1>"
 
-@app.route('/keluar')   # LOG OUT
+@app.route('/keluar')  # Keluar
 def keluar():
   if 'masuk' in session:
     session.pop('masuk')
@@ -71,7 +71,7 @@ def keluar():
   else:
     return redirect('/')
 
-@app.route('/edit-data/<npm>/<nama>/<id>', methods=['GET', 'POST'])   # MEMPERBARUI DATA - UPDATE
+@app.route('/edit-data/<npm>/<nama>/<id>', methods=['GET', 'POST'])  # Perbarui data
 def edit_data(npm, nama, id):
   if 'masuk' in session:
     data = collection.find_one( {"_id" : int(id)} )
