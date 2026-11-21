@@ -1,8 +1,8 @@
+# Flask with MongoDB
+
 <p align="center">
   <img src="https://i.imgur.com/aJg6hNK.jpg">
 </p>
-
-# Flask with MongoDB
 
 ## Installation
 
